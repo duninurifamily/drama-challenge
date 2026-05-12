@@ -26,7 +26,6 @@ textarea{height:68px;resize:none}
 .btn:hover{background:#f5f5f0}
 .btn-p{background:#1a1a1a;color:#fff;border-color:#1a1a1a}
 .btn-p:hover{opacity:.85}
-.btn-p:disabled{opacity:.4;cursor:not-allowed}
 .btn-sm{width:auto;padding:6px 14px;font-size:13px;margin-top:0}
 .btn-ghost{width:auto;padding:0;font-size:13px;background:none;border:none;color:#888;cursor:pointer}
 .back{font-size:13px;color:#888;cursor:pointer;margin-bottom:1rem;display:inline-flex;align-items:center;gap:4px;background:none;border:none;padding:0}
@@ -44,18 +43,16 @@ textarea{height:68px;resize:none}
 .b-line{background:#faeeda;color:#633806}
 .b-review{background:#e1f5ee;color:#085041}
 .room-item{padding:10px 12px;border:1px solid #e0e0db;border-radius:8px;cursor:pointer;margin-bottom:8px;transition:all .15s;background:#fff}
-.room-item:hover{border-color:#1a1a1a;background:#f9f9f6}
-.room-item.sel{border-color:#1a1a1a;background:#f9f9f6}
+.room-item:hover,.room-item.sel{border-color:#1a1a1a;background:#f9f9f6}
 .modal-bg{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.5);align-items:flex-start;justify-content:center;z-index:100;padding-top:60px}
 .modal-bg.open{display:flex}
-.modal{background:#fff;border-radius:16px;border:1px solid #e5e5e0;padding:1.25rem;width:92%;max-width:380px}
+.modal{background:#fff;border-radius:16px;padding:1.25rem;width:92%;max-width:380px}
 .modal h3{font-size:16px;font-weight:600;margin-bottom:3px}
 .modal-sub{font-size:13px;color:#888;margin-bottom:1rem}
 .type-btns{display:flex;gap:6px;margin-bottom:10px}
-.type-btn{flex:1;padding:6px 4px;font-size:12px;border-radius:8px;border:1px solid #e0e0db;background:#fff;color:#888;cursor:pointer;text-align:center;transition:all .15s}
+.type-btn{flex:1;padding:6px 4px;font-size:12px;border-radius:8px;border:1px solid #e0e0db;background:#fff;color:#888;cursor:pointer;text-align:center}
 .type-btn.on{border-color:#1a1a1a;color:#1a1a1a;font-weight:600}
-.img-upload-area{border:1px dashed #ccc;border-radius:8px;padding:1rem;text-align:center;cursor:pointer;margin-bottom:10px;font-size:13px;color:#888;transition:border-color .15s}
-.img-upload-area:hover{border-color:#888}
+.img-upload-area{border:1px dashed #ccc;border-radius:8px;padding:1rem;text-align:center;cursor:pointer;margin-bottom:10px;font-size:13px;color:#888}
 .img-preview{width:100%;border-radius:8px;margin-bottom:8px;display:none;max-height:240px;object-fit:cover}
 .feed-card{background:#fff;border:1px solid #e5e5e0;border-radius:12px;margin-bottom:14px;overflow:hidden}
 .feed-img{width:100%;display:block;max-height:320px;object-fit:cover}
@@ -79,25 +76,17 @@ textarea{height:68px;resize:none}
 .hero-ph{border:1px dashed #ccc;border-radius:12px;padding:1.5rem;text-align:center;font-size:13px;color:#aaa}
 .hero-change-btn{position:absolute;bottom:10px;right:10px;background:rgba(0,0,0,.6);color:#fff;border:none;border-radius:8px;padding:6px 12px;font-size:12px;cursor:pointer;display:none}
 .owner-badge{display:inline-flex;align-items:center;gap:4px;font-size:11px;padding:2px 8px;border-radius:6px;background:#eeedfe;color:#3c3489;margin-left:6px}
-.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:#1a1a1a;color:#fff;padding:10px 20px;border-radius:8px;font-size:13px;z-index:999;display:none;white-space:nowrap}
+.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:#1a1a1a;color:#fff;padding:10px 20px;border-radius:8px;font-size:13px;z-index:999;display:none}
 .loading{text-align:center;padding:2rem;font-size:13px;color:#888}
-.nav-bar{position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:1px solid #e5e5e0;display:none;z-index:50}
-.nav-bar.on{display:flex}
-.nav-item{flex:1;padding:10px 0;text-align:center;font-size:11px;font-weight:600;color:#888;cursor:pointer;border:none;background:none}
-.nav-item.on{color:#1a1a1a}
 </style>
 </head>
 <body>
 <div class="wrap">
 
-<!-- 홈 화면 -->
 <div id="s-home" class="scr on" style="padding-top:2rem">
   <div class="hero-wrap">
     <img id="hero-img-home" class="hero-img-el" alt="대표 이미지"/>
-    <div id="hero-ph-home" class="hero-ph">
-      <div style="font-size:28px;margin-bottom:6px">🏥</div>
-      닥터신 챌린지
-    </div>
+    <div id="hero-ph-home" class="hero-ph"><div style="font-size:28px;margin-bottom:6px">🏥</div>닥터신 챌린지</div>
   </div>
   <h2 style="font-size:22px;margin-bottom:4px">닥터신 챌린지</h2>
   <p class="sub" style="margin-bottom:1.5rem">임성한 작가의 병맛 드라마, 같이 버텨보자</p>
@@ -105,11 +94,9 @@ textarea{height:68px;resize:none}
   <button class="btn" onclick="goJoin()">기존 방 입장하기</button>
 </div>
 
-<!-- 방 만들기 -->
 <div id="s-create" class="scr">
   <button class="back" onclick="go('s-home')">← 돌아가기</button>
-  <h2>방 만들기</h2>
-  <p class="sub">새 챌린지 방을 개설해</p>
+  <h2>방 만들기</h2><p class="sub">새 챌린지 방을 개설해</p>
   <div class="card">
     <div class="field-wrap">
       <label>방 이름</label>
@@ -129,15 +116,11 @@ textarea{height:68px;resize:none}
   </div>
 </div>
 
-<!-- 방 입장하기 -->
 <div id="s-join" class="scr">
   <button class="back" onclick="go('s-home')">← 돌아가기</button>
-  <h2>방 입장하기</h2>
-  <p class="sub">입장할 방을 선택해</p>
+  <h2>방 입장하기</h2><p class="sub">입장할 방을 선택해</p>
   <div id="room-list" style="margin-bottom:12px"></div>
-  <div id="no-rooms" style="text-align:center;color:#aaa;font-size:13px;padding:2rem 0;display:none">
-    아직 만들어진 방이 없어.<br/>먼저 방을 만들어봐!
-  </div>
+  <div id="no-rooms" style="text-align:center;color:#aaa;font-size:13px;padding:2rem 0;display:none">아직 만들어진 방이 없어.<br/>먼저 방을 만들어봐!</div>
   <div id="j-form" style="display:none">
     <div class="card">
       <p style="font-size:13px;font-weight:600;color:#1a1a1a;margin-bottom:10px" id="j-room-label"></p>
@@ -156,9 +139,8 @@ textarea{height:68px;resize:none}
   </div>
 </div>
 
-<!-- 메인 -->
 <div id="s-main" class="scr" style="padding-bottom:80px">
-  <div class="hero-wrap" id="main-hero-wrap">
+  <div class="hero-wrap">
     <img id="hero-img-main" class="hero-img-el" alt="대표 이미지"/>
     <div id="hero-ph-main" class="hero-ph" style="padding:1rem;font-size:12px">대표 이미지 없음</div>
     <button class="hero-change-btn" id="hero-change-btn" onclick="document.getElementById('hero-file-main').click()">📷 이미지 변경</button>
@@ -195,9 +177,8 @@ textarea{height:68px;resize:none}
   <div id="tab-1" style="display:none"><div id="feed-list"></div></div>
 </div>
 
-</div><!-- /wrap -->
+</div>
 
-<!-- 회차 기록 모달 -->
 <div id="modal-ep" class="modal-bg">
   <div class="modal">
     <h3 id="mod-title"></h3>
@@ -207,9 +188,7 @@ textarea{height:68px;resize:none}
       <button class="type-btn" id="tb-scene" onclick="selType('scene')">🎬 명장면</button>
       <button class="type-btn" id="tb-line" onclick="selType('line')">💬 명대사</button>
     </div>
-    <div class="img-upload-area" id="img-upload-label" onclick="document.getElementById('ep-img-file').click()">
-      📷 이미지 첨부 (선택)
-    </div>
+    <div class="img-upload-area" id="img-upload-label" onclick="document.getElementById('ep-img-file').click()">📷 이미지 첨부 (선택)</div>
     <input type="file" id="ep-img-file" accept="image/*" style="display:none" onchange="previewEpImg(this)"/>
     <img id="ep-img-preview" class="img-preview" alt="미리보기"/>
     <textarea id="mod-text" placeholder="이 회차의 기억에 남는 순간은?"></textarea>
@@ -222,11 +201,9 @@ textarea{height:68px;resize:none}
 
 <div class="toast" id="toast"></div>
 
-<!-- Firebase -->
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.13.0/firebase-app.js";
 import { getFirestore, doc, getDoc, setDoc, updateDoc, collection, query, orderBy, onSnapshot, addDoc, serverTimestamp, getDocs } from "https://www.gstatic.com/firebasejs/12.13.0/firebase-firestore.js";
-import { getStorage, ref, uploadString, getDownloadURL } from "https://www.gstatic.com/firebasejs/12.13.0/firebase-storage.js";
 
 const firebaseConfig = {
   apiKey: "AIzaSyCwjGgQ2naJOonhpcTYR2jH-qwXqw5DMjE",
@@ -239,8 +216,6 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
-const storage = getStorage(app);
-
 const TOTAL = 16;
 let cur = { roomId: null, user: null };
 let selEp = null, selTyp = 'review', epImgData = null, selRoomId = null;
@@ -250,6 +225,7 @@ function go(id) {
   document.querySelectorAll('.scr').forEach(s => s.classList.remove('on'));
   document.getElementById(id).classList.add('on');
 }
+window.go = go;
 
 function showToast(msg) {
   const t = document.getElementById('toast');
@@ -266,7 +242,6 @@ function setField(inputId, msgId, msg, ok) {
   if (msg) inp.classList.add(ok ? 'input-ok' : 'input-err');
 }
 
-// 방 이름 중복 체크
 async function checkRoomName(val) {
   const v = val.trim();
   if (!v) { setField('c-rname', 'c-rname-msg', '', false); return false; }
@@ -279,7 +254,6 @@ async function checkRoomName(val) {
 }
 window.checkRoomName = checkRoomName;
 
-// 닉네임 중복 체크
 async function checkJoinNick(val) {
   if (!selRoomId) return false;
   const v = val.trim();
@@ -294,7 +268,6 @@ async function checkJoinNick(val) {
 }
 window.checkJoinNick = checkJoinNick;
 
-// 방 만들기
 async function createRoom() {
   const rn = document.getElementById('c-rname').value.trim();
   const nick = document.getElementById('c-nick').value.trim();
@@ -308,8 +281,7 @@ async function createRoom() {
   await setDoc(doc(db, 'rooms', id), {
     name: rn, pw, owner: nick,
     members: { [nick]: { done: [] } },
-    heroImg: null,
-    createdAt: serverTimestamp()
+    heroImg: null, createdAt: serverTimestamp()
   });
   cur = { roomId: id, user: nick };
   localStorage.setItem('ds-session', JSON.stringify(cur));
@@ -317,7 +289,6 @@ async function createRoom() {
 }
 window.createRoom = createRoom;
 
-// 방 목록 로드
 async function goJoin() {
   go('s-join');
   selRoomId = null;
@@ -344,8 +315,8 @@ function selectRoom(id) {
   document.querySelectorAll('.room-item').forEach(el => el.classList.remove('sel'));
   const el = document.getElementById('ri-' + id);
   if (el) el.classList.add('sel');
-  const snap_data = document.querySelector(`#ri-${id} div`)?.textContent;
-  document.getElementById('j-room-label').textContent = `"${snap_data}" 입장`;
+  const nameEl = el?.querySelector('div');
+  document.getElementById('j-room-label').textContent = `"${nameEl?.textContent}" 입장`;
   document.getElementById('j-form').style.display = 'block';
   document.getElementById('j-nick').value = '';
   document.getElementById('j-pw').value = '';
@@ -355,7 +326,6 @@ function selectRoom(id) {
 }
 window.selectRoom = selectRoom;
 
-// 방 입장
 async function joinRoom() {
   const nick = document.getElementById('j-nick').value.trim();
   const pw = document.getElementById('j-pw').value.trim();
@@ -366,16 +336,13 @@ async function joinRoom() {
   if (!roomDoc.exists() || pw !== roomDoc.data().pw) { err.textContent = '비밀번호가 틀렸어'; return; }
   const nickOk = await checkJoinNick(nick);
   if (!nickOk) return;
-  await updateDoc(doc(db, 'rooms', selRoomId), {
-    [`members.${nick}`]: { done: [] }
-  });
+  await updateDoc(doc(db, 'rooms', selRoomId), { [`members.${nick}`]: { done: [] } });
   cur = { roomId: selRoomId, user: nick };
   localStorage.setItem('ds-session', JSON.stringify(cur));
   enterRoom();
 }
 window.joinRoom = joinRoom;
 
-// 메인 진입
 async function enterRoom() {
   const roomDoc = await getDoc(doc(db, 'rooms', cur.roomId));
   if (!roomDoc.exists()) return;
@@ -388,7 +355,6 @@ async function enterRoom() {
   updateHeroImg(rm.heroImg);
   renderGrid(rm.members[cur.user]?.done || []);
   renderVS(rm);
-  // 실시간 방 데이터 구독
   if (unsubRoom) unsubRoom();
   unsubRoom = onSnapshot(doc(db, 'rooms', cur.roomId), snap => {
     if (!snap.exists()) return;
@@ -396,6 +362,7 @@ async function enterRoom() {
     renderGrid(d.members[cur.user]?.done || []);
     renderVS(d);
     updateHeroImg(d.heroImg);
+    document.getElementById('hero-change-btn').style.display = d.owner === cur.user ? 'block' : 'none';
   });
   switchTab(0);
   go('s-main');
@@ -417,21 +384,32 @@ async function leaveRoom() {
 }
 window.leaveRoom = leaveRoom;
 
-// 히어로 이미지 업로드
+function resizeImage(file, maxWidth, quality, cb) {
+  const reader = new FileReader();
+  reader.onload = e => {
+    const img = new Image();
+    img.onload = () => {
+      const canvas = document.createElement('canvas');
+      let w = img.width, h = img.height;
+      if (w > maxWidth) { h = Math.round(h * maxWidth / w); w = maxWidth; }
+      canvas.width = w; canvas.height = h;
+      canvas.getContext('2d').drawImage(img, 0, 0, w, h);
+      cb(canvas.toDataURL('image/jpeg', quality));
+    };
+    img.src = e.target.result;
+  };
+  reader.readAsDataURL(file);
+}
+
 async function uploadHero(inp) {
   const roomDoc = await getDoc(doc(db, 'rooms', cur.roomId));
-  if (roomDoc.data().owner !== cur.user) return;
+  if (!roomDoc.exists() || roomDoc.data().owner !== cur.user) return;
   const f = inp.files[0]; if (!f) return;
   showToast('이미지 업로드 중...');
-  const reader = new FileReader();
-  reader.onload = async e => {
-    const storageRef = ref(storage, `heroes/${cur.roomId}`);
-    await uploadString(storageRef, e.target.result, 'data_url');
-    const url = await getDownloadURL(storageRef);
-    await updateDoc(doc(db, 'rooms', cur.roomId), { heroImg: url });
-    showToast('이미지 업로드 완료!');
-  };
-  reader.readAsDataURL(f);
+  resizeImage(f, 800, 0.7, async base64 => {
+    await updateDoc(doc(db, 'rooms', cur.roomId), { heroImg: base64 });
+    showToast('이미지 변경 완료!');
+  });
 }
 window.uploadHero = uploadHero;
 
@@ -503,42 +481,28 @@ window.selType = selType;
 
 function previewEpImg(inp) {
   const f = inp.files[0]; if (!f) return;
-  const r = new FileReader();
-  r.onload = e => {
-    epImgData = e.target.result;
+  resizeImage(f, 800, 0.7, base64 => {
+    epImgData = base64;
     const p = document.getElementById('ep-img-preview');
-    p.src = epImgData; p.style.display = 'block';
+    p.src = base64; p.style.display = 'block';
     document.getElementById('img-upload-label').style.display = 'none';
-  };
-  r.readAsDataURL(f);
+  });
 }
 window.previewEpImg = previewEpImg;
 
-// 회차 완료 저장
 async function saveEp() {
   const text = document.getElementById('mod-text').value.trim();
-  // 회차 완료 처리
   const roomDoc = await getDoc(doc(db, 'rooms', cur.roomId));
   const done = roomDoc.data().members[cur.user]?.done || [];
   if (!done.includes(selEp)) {
     done.push(selEp);
-    await updateDoc(doc(db, 'rooms', cur.roomId), {
-      [`members.${cur.user}.done`]: done
-    });
+    await updateDoc(doc(db, 'rooms', cur.roomId), { [`members.${cur.user}.done`]: done });
   }
-  // 피드 기록
   if (text || epImgData) {
-    let imgUrl = null;
-    if (epImgData) {
-      const storageRef = ref(storage, `feeds/${cur.roomId}/${Date.now()}`);
-      await uploadString(storageRef, epImgData, 'data_url');
-      imgUrl = await getDownloadURL(storageRef);
-    }
     await addDoc(collection(db, 'rooms', cur.roomId, 'feed'), {
       user: cur.user, ep: selEp, type: selTyp,
-      text, img: imgUrl,
-      ts: serverTimestamp(),
-      comments: []
+      text, img: epImgData || null,
+      ts: serverTimestamp(), comments: []
     });
   }
   closeModal();
@@ -546,7 +510,6 @@ async function saveEp() {
 }
 window.saveEp = saveEp;
 
-// 피드 실시간 로드
 function loadFeed() {
   if (unsubFeed) unsubFeed();
   const el = document.getElementById('feed-list');
@@ -558,7 +521,7 @@ function loadFeed() {
       return;
     }
     const tmap = { review: { label: '한줄 감상', cls: 'b-review' }, scene: { label: '명장면', cls: 'b-scene' }, line: { label: '명대사', cls: 'b-line' } };
-    el.innerHTML = snap.docs.map((d, fi) => {
+    el.innerHTML = snap.docs.map(d => {
       const f = d.data(); const fid = d.id;
       const t = tmap[f.type] || tmap.review;
       const ts = f.ts?.toDate ? f.ts.toDate() : new Date();
@@ -634,16 +597,11 @@ async function addReply(fid, ci) {
 }
 window.addReply = addReply;
 
-// 세션 복원
 const saved = localStorage.getItem('ds-session');
 if (saved) {
-  try {
-    cur = JSON.parse(saved);
-    enterRoom();
-  } catch(e) { localStorage.removeItem('ds-session'); }
+  try { cur = JSON.parse(saved); enterRoom(); }
+  catch(e) { localStorage.removeItem('ds-session'); }
 }
-
-window.go = go;
 </script>
 </body>
 </html>
