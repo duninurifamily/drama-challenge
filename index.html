@@ -14,8 +14,8 @@ h2{font-size:18px;font-weight:600;color:#1a1a1a;margin-bottom:3px}
 .sub{font-size:13px;color:#888;margin-bottom:1.25rem}
 .card{background:#fff;border:0.5px solid #e5e5e0;border-radius:12px;padding:1rem 1.25rem;margin-bottom:12px}
 label{font-size:13px;color:#888;display:block;margin-bottom:5px}
-input,textarea{width:100%;padding:8px 10px;border:1px solid #e0e0db;border-radius:8px;font-size:14px;background:#fff;color:#1a1a1a;outline:none;margin-bottom:4px;font-family:inherit}
-input:focus,textarea:focus{border-color:#1a1a1a}
+input,textarea,select{width:100%;padding:8px 10px;border:1px solid #e0e0db;border-radius:8px;font-size:14px;background:#fff;color:#1a1a1a;outline:none;margin-bottom:4px;font-family:inherit}
+input:focus,textarea:focus,select:focus{border-color:#1a1a1a}
 textarea{height:68px;resize:none}
 .field-wrap{margin-bottom:10px}
 .field-msg{font-size:12px;margin:3px 0 0;min-height:16px;display:block;color:#e24b4a}
@@ -36,8 +36,8 @@ textarea{height:68px;resize:none}
 .ep-btn{padding:7px 4px;font-size:12px;font-weight:600;border-radius:8px;border:1px solid #e0e0db;background:#fff;color:#888;cursor:pointer;text-align:center;transition:all .15s}
 .ep-btn.done{background:#1d9e75;border-color:#0f6e56;color:#fff}
 .ep-btn:hover:not(.done){background:#f5f5f0}
-.pbar-bg{height:7px;border-radius:4px;background:#f0f0eb;overflow:hidden;margin-bottom:3px}
-.pbar{height:100%;border-radius:4px;transition:width .4s}
+.pbar-bg{height:5px;border-radius:3px;background:#f0f0eb;overflow:hidden;margin-bottom:3px}
+.pbar{height:100%;border-radius:3px;transition:width .4s}
 .badge{display:inline-block;font-size:11px;padding:2px 8px;border-radius:6px}
 .b-scene{background:#eeedfe;color:#3c3489}
 .b-line{background:#faeeda;color:#633806}
@@ -57,27 +57,64 @@ textarea{height:68px;resize:none}
 .feed-card{background:#fff;border:1px solid #e5e5e0;border-radius:12px;margin-bottom:14px;overflow:hidden}
 .feed-img{width:100%;display:block;max-height:320px;object-fit:cover}
 .feed-body{padding:.875rem 1rem}
-.feed-meta{font-size:12px;color:#888;margin-bottom:6px;display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.feed-meta{font-size:12px;color:#888;margin-bottom:6px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:4px}
+.feed-meta-left{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.feed-edit-btns{display:flex;gap:10px}
+.feed-edit-btn{font-size:11px;color:#bbb;cursor:pointer;background:none;border:none;padding:0;transition:color .15s}
+.feed-edit-btn:hover{color:#888}
+.feed-edit-btn.del:hover{color:#e24b4a}
 .feed-text{font-size:15px;color:#1a1a1a;line-height:1.6;margin-bottom:.75rem}
+.feed-edit-box{display:none;margin-bottom:.75rem}
+.feed-edit-box.on{display:block}
+.feed-edit-box textarea{margin-bottom:6px;height:72px}
+.feed-edit-box-btns{display:flex;gap:6px;justify-content:flex-end}
 .comment-area{border-top:1px solid #f0f0eb;padding-top:.75rem}
 .comment-item{font-size:13px;color:#1a1a1a;padding:5px 0;border-bottom:1px solid #f0f0eb}
 .comment-item:last-child{border-bottom:none}
-.comment-meta{font-size:11px;color:#888;margin-bottom:2px}
+.comment-meta{font-size:11px;color:#888;margin-bottom:2px;display:flex;justify-content:space-between;align-items:center}
+.comment-edit-btns{display:flex;gap:8px}
+.comment-edit-btn{font-size:10px;color:#bbb;cursor:pointer;background:none;border:none;padding:0}
+.comment-edit-btn:hover{color:#888}
+.comment-edit-btn.del:hover{color:#e24b4a}
 .reply-item{margin-left:16px;border-left:2px solid #e5e5e0;padding-left:10px;margin-top:4px}
+.comment-edit-box{display:none;margin-top:6px}
+.comment-edit-box.on{display:block}
+.comment-edit-box input{margin-bottom:6px}
 .comment-input-row{display:flex;gap:6px;margin-top:8px;align-items:center}
 .comment-input-row input{margin-bottom:0;flex:1;font-size:13px}
-.vs-row{display:flex;gap:10px;margin-bottom:1rem}
-.vs-box{flex:1;background:#f5f5f0;border-radius:8px;padding:.875rem;text-align:center}
-.vs-name{font-size:12px;color:#888;margin-bottom:3px}
-.vs-pct{font-size:26px;font-weight:700;color:#1a1a1a}
-.vs-ep{font-size:12px;color:#888}
+.rank-item{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:10px;background:#fff;border:1px solid #e5e5e0;margin-bottom:8px}
+.rank-item.me{border-color:#1a1a1a;background:#f9f9f6}
+.rank-num{font-size:20px;width:28px;text-align:center;flex-shrink:0}
+.rank-info{flex:1;min-width:0}
+.rank-name{font-size:13px;font-weight:600;color:#1a1a1a;margin-bottom:4px;display:flex;align-items:center;gap:5px;flex-wrap:wrap}
+.rank-pct{font-size:14px;font-weight:700;color:#1a1a1a;flex-shrink:0;width:36px;text-align:right}
+.me-tag{font-size:10px;color:#888;font-weight:400}
+.owner-tag{font-size:10px;padding:1px 6px;background:#eeedfe;color:#3c3489;border-radius:4px;font-weight:400}
+.dynamic-msg{font-size:13px;color:#888;line-height:1.6;margin-bottom:1.25rem;padding:12px 14px;background:#f9f9f6;border-radius:8px;border-left:3px solid #e0e0db}
+.notice-bar{background:#faeeda;border-radius:8px;padding:10px 12px;margin-bottom:1.25rem;display:flex;align-items:flex-start;gap:8px}
+.notice-content{flex:1;font-size:13px;color:#633806;line-height:1.5}
+.notice-actions{display:flex;gap:8px;flex-shrink:0;margin-top:1px}
+.notice-btn{font-size:11px;color:#ba7517;cursor:pointer;background:none;border:none;padding:0}
+.notice-input-area{background:#faeeda;border-radius:8px;padding:10px 12px;margin-bottom:1.25rem;display:none}
+.notice-input-area.on{display:block}
+.notice-input-area textarea{background:#fff8ee;border-color:#e8c87a;height:60px;margin-bottom:8px;font-size:13px}
+.notice-input-btns{display:flex;gap:6px;justify-content:flex-end}
 .hero-wrap{position:relative;margin-bottom:1.25rem}
 .hero-img-el{width:100%;max-height:220px;object-fit:cover;border-radius:12px;display:none}
 .hero-ph{border:1px dashed #ccc;border-radius:12px;padding:1.5rem;text-align:center;font-size:13px;color:#aaa}
 .hero-change-btn{position:absolute;bottom:10px;right:10px;background:rgba(0,0,0,.6);color:#fff;border:none;border-radius:8px;padding:6px 12px;font-size:12px;cursor:pointer;display:none}
 .owner-badge{display:inline-flex;align-items:center;gap:4px;font-size:11px;padding:2px 8px;border-radius:6px;background:#eeedfe;color:#3c3489;margin-left:6px}
-.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:#1a1a1a;color:#fff;padding:10px 20px;border-radius:8px;font-size:13px;z-index:999;display:none}
+.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:#1a1a1a;color:#fff;padding:10px 20px;border-radius:8px;font-size:13px;z-index:999;display:none;white-space:nowrap}
 .loading{text-align:center;padding:2rem;font-size:13px;color:#888}
+.challenge-type-wrap{border:1px solid #e0e0db;border-radius:8px;padding:10px 12px;margin-bottom:10px}
+.challenge-opt{display:flex;align-items:center;gap:8px;padding:5px 0;cursor:pointer;font-size:13px;color:#1a1a1a}
+.challenge-opt input[type=radio]{width:14px;height:14px;flex-shrink:0;accent-color:#1a1a1a}
+.challenge-opt-sub{font-size:11px;color:#888;padding-left:22px;margin-top:-3px;margin-bottom:6px}
+.challenge-opt.disabled{opacity:.4;cursor:not-allowed}
+.ep-count-wrap{background:#f5f5f0;border-radius:6px;padding:8px 10px;margin-top:8px}
+.ep-count-wrap label{font-size:12px;color:#888;margin-bottom:4px}
+.ep-count-wrap select{margin-bottom:0;font-size:13px}
+.ep-section-label{font-size:13px;color:#888;margin-bottom:10px}
 </style>
 </head>
 <body>
@@ -110,6 +147,32 @@ textarea{height:68px;resize:none}
     <div class="field-wrap">
       <label>방 비밀번호 <span style="font-size:11px;color:#aaa">(친구에게 공유)</span></label>
       <input type="password" id="c-pw" placeholder="예: 1234"/>
+    </div>
+    <div class="field-wrap">
+      <label style="font-weight:600;color:#1a1a1a;margin-bottom:8px">챌린지 종류</label>
+      <div class="challenge-type-wrap">
+        <label class="challenge-opt">
+          <input type="radio" name="ctype" value="drama" checked onchange="onChallengeType()"/> 드라마 챌린지
+        </label>
+        <div class="challenge-opt-sub">시청 완료 + 기록 + 대결</div>
+        <label class="challenge-opt disabled">
+          <input type="radio" name="ctype" disabled/> <span style="color:#aaa">더 많은 종류 준비 중...</span>
+        </label>
+        <div class="ep-count-wrap" id="ep-count-wrap">
+          <label>총 회차 수</label>
+          <select id="c-total" onchange="onTotalChange(this.value)">
+            <option value="16">16화</option>
+            <option value="20">20화</option>
+            <option value="32">32화</option>
+            <option value="50">50화</option>
+            <option value="100">100화</option>
+            <option value="custom">직접 입력</option>
+          </select>
+          <div id="custom-ep-wrap" style="display:none;margin-top:6px">
+            <input type="number" id="c-custom-total" placeholder="회차 수 입력" min="1" max="500" style="margin-bottom:0"/>
+          </div>
+        </div>
+      </div>
     </div>
     <span id="c-global-err" class="field-msg" style="display:block;margin-bottom:6px"></span>
     <button class="btn btn-p" onclick="createRoom()">방 만들기</button>
@@ -151,30 +214,23 @@ textarea{height:68px;resize:none}
       <h2 id="m-title"></h2>
       <span id="owner-badge" class="owner-badge" style="display:none">👑 방장</span>
     </div>
-    <div style="display:flex;align-items:center;gap:10px">
-      <button class="btn-ghost" id="delete-room-btn" onclick="deleteRoom()" style="display:none;color:#e24b4a">🗑 방 삭제</button>
+    <div style="display:flex;align-items:center;gap:12px">
+      <button class="btn-ghost" id="delete-room-btn" onclick="deleteRoom()" style="display:none;color:#e24b4a;font-size:12px">🗑 방 삭제</button>
       <button class="btn-ghost" onclick="leaveRoom()">나가기</button>
     </div>
   </div>
   <p class="sub" id="m-sub"></p>
+
+  <div id="notice-section"></div>
+
   <div class="tabs">
     <button class="tab on" onclick="switchTab(0)">진행 · 대결</button>
     <button class="tab" onclick="switchTab(1)">피드</button>
   </div>
   <div id="tab-0">
-    <div class="vs-row">
-      <div class="vs-box"><div class="vs-name" id="vs-na"></div><div class="vs-pct" id="vs-pa">0%</div><div class="vs-ep" id="vs-ea">0화 완료</div></div>
-      <div style="display:flex;align-items:center;font-size:15px;font-weight:700;color:#aaa">VS</div>
-      <div class="vs-box"><div class="vs-name" id="vs-nb">상대</div><div class="vs-pct" id="vs-pb">0%</div><div class="vs-ep" id="vs-eb">0화 완료</div></div>
-    </div>
-    <div id="lead-msg" style="font-size:13px;color:#888;text-align:center;margin-bottom:1.25rem"></div>
-    <div style="margin-bottom:1.5rem">
-      <div style="display:flex;justify-content:space-between;font-size:12px;color:#888;margin-bottom:4px"><span id="pbar-la"></span><span id="pbar-pa">0%</span></div>
-      <div class="pbar-bg"><div class="pbar" id="pbar-a" style="width:0%;background:#1d9e75"></div></div>
-      <div style="display:flex;justify-content:space-between;font-size:12px;color:#888;margin:8px 0 4px"><span id="pbar-lb">상대</span><span id="pbar-pb">0%</span></div>
-      <div class="pbar-bg"><div class="pbar" id="pbar-b" style="width:0%;background:#378add"></div></div>
-    </div>
-    <p style="font-size:13px;color:#aaa;margin-bottom:10px">회차 클릭 → 완료 처리 + 기록 남기기</p>
+    <div id="dynamic-msg" class="dynamic-msg" style="display:none"></div>
+    <div id="ranking-list" style="margin-bottom:1.25rem"></div>
+    <p class="ep-section-label">내 진행 현황 — 회차 클릭해서 완료 처리</p>
     <div class="ep-grid" id="ep-grid"></div>
   </div>
   <div id="tab-1" style="display:none"><div id="feed-list"></div></div>
@@ -219,44 +275,81 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
-const TOTAL = 16;
 let cur = { roomId: null, user: null };
 let selEp = null, selTyp = 'review', epImgData = null, selRoomId = null;
 let unsubFeed = null, unsubRoom = null;
+let currentTotal = 16;
 
-function go(id) {
-  document.querySelectorAll('.scr').forEach(s => s.classList.remove('on'));
-  document.getElementById(id).classList.add('on');
+// ─── 임성한 다이나믹 멘트 ───
+function getImSungHanMsg(myRank, totalMembers, myDone, topDone, total, topName) {
+  const diff = topDone - myDone;
+  const myPct = Math.round(myDone / total * 100);
+
+  // 완주
+  if (myDone >= total) return `말 있지, 칼 뽑았으면 무라도 썰으라구. 근데 나는 칼도 썰구 밥도 다 먹었어. 이 챌린지, 내가 완주했구. 그쪽들 아직 멀었지? 기막히구 코막혀.`;
+
+  // 0화 시작도 안 함
+  if (myDone === 0) return `아서. 말 있지? 시작두 안 했으면서 뭘 바래? 벌떡 일어나 뛰려 애라도 쓰는 게 만물 영장이구 인간이야. 나자빠져있는 건 인간 거죽 쓴 금수라구.`;
+
+  // 1등
+  if (myRank === 1) {
+    if (diff === 0 && totalMembers > 1) return `말 있지, 동률이라구. 이건 예사로운 일이 아니야. 운명이 우릴 같은 선상에 올려놓은 거구. 근데 순리는 결국 하나야. 내가 먼저 치고 나가는 거라구.`;
+    if (totalMembers === 1) return `말 있지, 혼자 달리는 거 멋있긴 한데. 같이 달릴 사람 불러오는 게 도리구 순리야. 그쪽, 친구 없어? 기막히구 코막혀.`;
+    return `말 있지, 오를 때가 있으면 내려올 때두 있는 거라구. 근데 지금은 내가 1등이구. ${topName}이랑 비교하는 거 자체가 웃기지 않아? 묵묵히 앞만 보는 게 이치구 도리야.`;
+  }
+
+  // 꼴등
+  if (myRank === totalMembers && totalMembers > 1) {
+    if (diff >= 8) return `기막히구 코막혀. ${topName}이 ${diff}화나 앞에 있다구? 이게 말이 돼? 말 있지, 사람 나이 들어서 힘 없으면 볼썽 사나워. 칼 뽑았으면 무라도 썰으라구. 이판사판 공사판이야.`;
+    return `말 있지, 꼴등이라구 포기해? 미쳤다구 지금? 사람이면 응당 나자빠질 수 있어. 근데 계속 나자빠져있는 건 인간 거죽 쓴 금수야. 벌떡 일어나!`;
+  }
+
+  // 중간 순위, 많이 뒤처짐
+  if (diff >= 6) return `말 있지, ${topName}이랑 ${diff}화 차이라구. 백짓장두 맞들면 낫다는데 혼자 이러구 있어? 마더테레사 납셨어. 아서, 지금 당장 TV 켜라구.`;
+
+  // 중간 순위, 박빙
+  if (diff <= 2 && diff > 0) return `말 있지, ${topName}이랑 ${diff}화 차이라구. 칼 한 번만 더 뽑으면 돼. 이거 놓치면 평생 후회라구. 그쪽, 안 질리구 배겨? 순리에 따라가라구.`;
+
+  // 일반 중간
+  return `말 있지, 과거는 히스토리구 미래는 미스테리구 현재는 프레젠트, 선물이라구. 지금 ${myPct}%야. 히스토리 자꾸 들춰 뭐해? 지금 이 순간 달리는 게 이치구 도리야.`;
 }
+
+// ─── 유틸 ───
+function go(id) { document.querySelectorAll('.scr').forEach(s => s.classList.remove('on')); document.getElementById(id).classList.add('on'); }
 window.go = go;
-
-function showToast(msg) {
-  const t = document.getElementById('toast');
-  t.textContent = msg; t.style.display = 'block';
-  setTimeout(() => t.style.display = 'none', 2500);
-}
-
+function showToast(msg) { const t = document.getElementById('toast'); t.textContent = msg; t.style.display = 'block'; setTimeout(() => t.style.display = 'none', 2500); }
 function setField(inputId, msgId, msg, ok) {
-  const inp = document.getElementById(inputId);
-  const m = document.getElementById(msgId);
+  const inp = document.getElementById(inputId); const m = document.getElementById(msgId);
   inp.classList.remove('input-ok', 'input-err');
-  m.className = 'field-msg' + (ok ? ' ok' : '');
-  m.textContent = msg;
+  m.className = 'field-msg' + (ok ? ' ok' : ''); m.textContent = msg;
   if (msg) inp.classList.add(ok ? 'input-ok' : 'input-err');
 }
 
+// ─── 챌린지 타입 ───
+function onChallengeType() { document.getElementById('ep-count-wrap').style.display = 'block'; }
+window.onChallengeType = onChallengeType;
+function onTotalChange(val) {
+  document.getElementById('custom-ep-wrap').style.display = val === 'custom' ? 'block' : 'none';
+}
+window.onTotalChange = onTotalChange;
+function getSelectedTotal() {
+  const sel = document.getElementById('c-total').value;
+  if (sel === 'custom') { const v = parseInt(document.getElementById('c-custom-total').value); return isNaN(v) ? 16 : v; }
+  return parseInt(sel);
+}
+
+// ─── 방 이름 중복 체크 ───
 async function checkRoomName(val) {
   const v = val.trim();
   if (!v) { setField('c-rname', 'c-rname-msg', '', false); return false; }
   const snap = await getDocs(collection(db, 'rooms'));
   const names = snap.docs.map(d => d.data().name?.toLowerCase());
-  if (names.includes(v.toLowerCase())) {
-    setField('c-rname', 'c-rname-msg', '이미 있는 방 이름이야. 다른 이름을 써줘', false); return false;
-  }
+  if (names.includes(v.toLowerCase())) { setField('c-rname', 'c-rname-msg', '이미 있는 방 이름이야. 다른 이름을 써줘', false); return false; }
   setField('c-rname', 'c-rname-msg', '사용 가능한 방 이름이야', true); return true;
 }
 window.checkRoomName = checkRoomName;
 
+// ─── 닉네임 중복 체크 ───
 async function checkJoinNick(val) {
   if (!selRoomId) return false;
   const v = val.trim();
@@ -265,27 +358,25 @@ async function checkJoinNick(val) {
   if (!roomDoc.exists()) return false;
   const members = roomDoc.data().members || {};
   const isExisting = Object.keys(members).map(n => n.toLowerCase()).includes(v.toLowerCase());
-  if (isExisting) {
-    setField('j-nick', 'j-nick-msg', '기존 멤버야. 비밀번호 입력 후 재입장 가능해', true); return 'existing';
-  }
+  if (isExisting) { setField('j-nick', 'j-nick-msg', '기존 멤버야. 비밀번호 입력 후 재입장 가능해', true); return 'existing'; }
   setField('j-nick', 'j-nick-msg', '사용 가능한 닉네임이야', true); return 'new';
 }
 window.checkJoinNick = checkJoinNick;
 
+// ─── 방 만들기 ───
 async function createRoom() {
   const rn = document.getElementById('c-rname').value.trim();
   const nick = document.getElementById('c-nick').value.trim();
   const pw = document.getElementById('c-pw').value.trim();
-  const err = document.getElementById('c-global-err');
-  err.textContent = '';
+  const total = getSelectedTotal();
+  const err = document.getElementById('c-global-err'); err.textContent = '';
   if (!rn || !nick || !pw) { err.textContent = '모든 항목을 입력해줘'; return; }
-  const nameOk = await checkRoomName(rn);
-  if (!nameOk) return;
+  const nameOk = await checkRoomName(rn); if (!nameOk) return;
   const id = Date.now().toString(36) + Math.random().toString(36).slice(2, 6);
   await setDoc(doc(db, 'rooms', id), {
-    name: rn, pw, owner: nick,
+    name: rn, pw, owner: nick, total,
     members: { [nick]: { done: [] } },
-    heroImg: null, createdAt: serverTimestamp()
+    heroImg: null, notice: null, createdAt: serverTimestamp()
   });
   cur = { roomId: id, user: nick };
   localStorage.setItem('ds-session', JSON.stringify(cur));
@@ -293,22 +384,20 @@ async function createRoom() {
 }
 window.createRoom = createRoom;
 
+// ─── 방 목록 ───
 async function goJoin() {
-  go('s-join');
-  selRoomId = null;
+  go('s-join'); selRoomId = null;
   document.getElementById('j-form').style.display = 'none';
   document.getElementById('j-global-err').textContent = '';
   const snap = await getDocs(collection(db, 'rooms'));
-  const listEl = document.getElementById('room-list');
-  const noEl = document.getElementById('no-rooms');
+  const listEl = document.getElementById('room-list'); const noEl = document.getElementById('no-rooms');
   if (snap.empty) { listEl.innerHTML = ''; noEl.style.display = 'block'; return; }
   noEl.style.display = 'none';
   listEl.innerHTML = snap.docs.map(d => {
-    const rm = d.data();
-    const cnt = Object.keys(rm.members || {}).length;
+    const rm = d.data(); const cnt = Object.keys(rm.members || {}).length;
     return `<div class="room-item" onclick="selectRoom('${d.id}')" id="ri-${d.id}">
       <div style="font-size:14px;font-weight:600;color:#1a1a1a;margin-bottom:2px">${rm.name}</div>
-      <div style="font-size:12px;color:#888">${cnt}명 참여 중 · 방장: ${rm.owner}</div>
+      <div style="font-size:12px;color:#888">${cnt}명 참여 중 · 방장: ${rm.owner} · ${rm.total || 16}화</div>
     </div>`;
   }).join('');
 }
@@ -317,43 +406,37 @@ window.goJoin = goJoin;
 function selectRoom(id) {
   selRoomId = id;
   document.querySelectorAll('.room-item').forEach(el => el.classList.remove('sel'));
-  const el = document.getElementById('ri-' + id);
-  if (el) el.classList.add('sel');
+  const el = document.getElementById('ri-' + id); if (el) el.classList.add('sel');
   const nameEl = el?.querySelector('div');
   document.getElementById('j-room-label').textContent = `"${nameEl?.textContent}" 입장`;
   document.getElementById('j-form').style.display = 'block';
-  document.getElementById('j-nick').value = '';
-  document.getElementById('j-pw').value = '';
+  document.getElementById('j-nick').value = ''; document.getElementById('j-pw').value = '';
   document.getElementById('j-nick').classList.remove('input-ok', 'input-err');
-  document.getElementById('j-nick-msg').textContent = '';
-  document.getElementById('j-global-err').textContent = '';
+  document.getElementById('j-nick-msg').textContent = ''; document.getElementById('j-global-err').textContent = '';
 }
 window.selectRoom = selectRoom;
 
+// ─── 방 입장 ───
 async function joinRoom() {
   const nick = document.getElementById('j-nick').value.trim();
   const pw = document.getElementById('j-pw').value.trim();
-  const err = document.getElementById('j-global-err');
-  err.textContent = '';
+  const err = document.getElementById('j-global-err'); err.textContent = '';
   if (!nick || !selRoomId) { err.textContent = '닉네임을 입력해줘'; return; }
   const roomDoc = await getDoc(doc(db, 'rooms', selRoomId));
   if (!roomDoc.exists() || pw !== roomDoc.data().pw) { err.textContent = '비밀번호가 틀렸어'; return; }
-  const nickStatus = await checkJoinNick(nick);
-  if (!nickStatus) return;
-  // 새 멤버만 추가, 기존 멤버는 데이터 유지하며 재입장
-  if (nickStatus === 'new') {
-    await updateDoc(doc(db, 'rooms', selRoomId), { [`members.${nick}`]: { done: [] } });
-  }
+  const nickStatus = await checkJoinNick(nick); if (!nickStatus) return;
+  if (nickStatus === 'new') await updateDoc(doc(db, 'rooms', selRoomId), { [`members.${nick}`]: { done: [] } });
   cur = { roomId: selRoomId, user: nick };
   localStorage.setItem('ds-session', JSON.stringify(cur));
   enterRoom();
 }
 window.joinRoom = joinRoom;
 
+// ─── 메인 진입 ───
 async function enterRoom() {
-  const roomDoc = await getDoc(doc(db, 'rooms', cur.roomId));
-  if (!roomDoc.exists()) return;
+  const roomDoc = await getDoc(doc(db, 'rooms', cur.roomId)); if (!roomDoc.exists()) return;
   const rm = roomDoc.data();
+  currentTotal = rm.total || 16;
   document.getElementById('m-title').textContent = rm.name;
   document.getElementById('m-sub').textContent = '나: ' + cur.user;
   const isOwner = rm.owner === cur.user;
@@ -361,38 +444,85 @@ async function enterRoom() {
   document.getElementById('hero-change-btn').style.display = isOwner ? 'block' : 'none';
   document.getElementById('delete-room-btn').style.display = isOwner ? 'inline' : 'none';
   updateHeroImg(rm.heroImg);
+  renderNotice(rm.notice, isOwner);
   renderGrid(rm.members[cur.user]?.done || []);
-  renderVS(rm);
+  renderRanking(rm);
   if (unsubRoom) unsubRoom();
   unsubRoom = onSnapshot(doc(db, 'rooms', cur.roomId), snap => {
     if (!snap.exists()) return;
-    const d = snap.data();
-    renderGrid(d.members[cur.user]?.done || []);
-    renderVS(d);
+    const d = snap.data(); currentTotal = d.total || 16;
+    const iO = d.owner === cur.user;
+    document.getElementById('hero-change-btn').style.display = iO ? 'block' : 'none';
+    document.getElementById('delete-room-btn').style.display = iO ? 'inline' : 'none';
+    document.getElementById('owner-badge').style.display = iO ? 'inline-flex' : 'none';
     updateHeroImg(d.heroImg);
-    document.getElementById('hero-change-btn').style.display = d.owner === cur.user ? 'block' : 'none';
-    document.getElementById('delete-room-btn').style.display = d.owner === cur.user ? 'inline' : 'none';
+    renderNotice(d.notice, iO);
+    renderGrid(d.members[cur.user]?.done || []);
+    renderRanking(d);
   });
-  switchTab(0);
-  go('s-main');
+  switchTab(0); go('s-main');
 }
 
 function updateHeroImg(url) {
-  const img = document.getElementById('hero-img-main');
-  const ph = document.getElementById('hero-ph-main');
+  const img = document.getElementById('hero-img-main'); const ph = document.getElementById('hero-ph-main');
   if (url) { img.src = url; img.style.display = 'block'; ph.style.display = 'none'; }
   else { img.style.display = 'none'; ph.style.display = 'block'; }
 }
 
-async function leaveRoom() {
-  if (unsubRoom) { unsubRoom(); unsubRoom = null; }
-  if (unsubFeed) { unsubFeed(); unsubFeed = null; }
-  cur = { roomId: null, user: null };
-  localStorage.removeItem('ds-session');
-  go('s-home');
+// ─── 공지 ───
+function renderNotice(notice, isOwner) {
+  const sec = document.getElementById('notice-section');
+  if (!notice && !isOwner) { sec.innerHTML = ''; return; }
+  if (!notice && isOwner) {
+    sec.innerHTML = `<div style="margin-bottom:1.25rem">
+      <button class="btn-ghost" style="font-size:12px;color:#ba7517" onclick="showNoticeInput()">📢 공지 추가</button>
+      <div class="notice-input-area" id="notice-input-area">
+        <textarea id="notice-textarea" placeholder="방 전체에 공지할 내용을 입력해줘"></textarea>
+        <div class="notice-input-btns">
+          <button class="btn btn-sm" onclick="hideNoticeInput()">취소</button>
+          <button class="btn btn-sm btn-p" onclick="saveNotice()">저장</button>
+        </div>
+      </div>
+    </div>`;
+    return;
+  }
+  sec.innerHTML = `<div class="notice-bar">
+    <span style="font-size:16px;flex-shrink:0">📢</span>
+    <span class="notice-content" id="notice-text">${notice}</span>
+    ${isOwner ? `<div class="notice-actions">
+      <button class="notice-btn" onclick="showNoticeEdit()">수정</button>
+      <button class="notice-btn" style="color:#e24b4a" onclick="deleteNotice()">삭제</button>
+    </div>` : ''}
+  </div>
+  <div class="notice-input-area" id="notice-input-area">
+    <textarea id="notice-textarea" placeholder="공지 내용 수정">${notice}</textarea>
+    <div class="notice-input-btns">
+      <button class="btn btn-sm" onclick="hideNoticeInput()">취소</button>
+      <button class="btn btn-sm btn-p" onclick="saveNotice()">저장</button>
+    </div>
+  </div>`;
 }
-window.leaveRoom = leaveRoom;
+function showNoticeInput() { document.getElementById('notice-input-area')?.classList.add('on'); }
+window.showNoticeInput = showNoticeInput;
+function showNoticeEdit() { document.getElementById('notice-input-area')?.classList.add('on'); }
+window.showNoticeEdit = showNoticeEdit;
+function hideNoticeInput() { document.getElementById('notice-input-area')?.classList.remove('on'); }
+window.hideNoticeInput = hideNoticeInput;
+async function saveNotice() {
+  const text = document.getElementById('notice-textarea')?.value.trim();
+  if (!text) return;
+  await updateDoc(doc(db, 'rooms', cur.roomId), { notice: text });
+  showToast('공지가 저장됐어');
+}
+window.saveNotice = saveNotice;
+async function deleteNotice() {
+  if (!confirm('공지를 삭제할까?')) return;
+  await updateDoc(doc(db, 'rooms', cur.roomId), { notice: null });
+  showToast('공지가 삭제됐어');
+}
+window.deleteNotice = deleteNotice;
 
+// ─── 방 삭제 ───
 async function deleteRoom() {
   if (!cur.roomId) return;
   const roomDoc = await getDoc(doc(db, 'rooms', cur.roomId));
@@ -405,14 +535,19 @@ async function deleteRoom() {
   await batch.commit();
   if (unsubRoom) { unsubRoom(); unsubRoom = null; }
   if (unsubFeed) { unsubFeed(); unsubFeed = null; }
-  cur = { roomId: null, user: null };
-  localStorage.removeItem('ds-session');
-  showToast('방이 삭제됐어');
-  go('s-home');
+  cur = { roomId: null, user: null }; localStorage.removeItem('ds-session');
+  showToast('방이 삭제됐어'); go('s-home');
 }
 window.deleteRoom = deleteRoom;
 
+async function leaveRoom() {
+  if (unsubRoom) { unsubRoom(); unsubRoom = null; }
+  if (unsubFeed) { unsubFeed(); unsubFeed = null; }
+  cur = { roomId: null, user: null }; localStorage.removeItem('ds-session'); go('s-home');
+}
+window.leaveRoom = leaveRoom;
 
+// ─── 히어로 이미지 ───
 function resizeImage(file, maxWidth, quality, cb) {
   const reader = new FileReader();
   reader.onload = e => {
@@ -424,12 +559,9 @@ function resizeImage(file, maxWidth, quality, cb) {
       canvas.width = w; canvas.height = h;
       canvas.getContext('2d').drawImage(img, 0, 0, w, h);
       cb(canvas.toDataURL('image/jpeg', quality));
-    };
-    img.src = e.target.result;
-  };
-  reader.readAsDataURL(file);
+    }; img.src = e.target.result;
+  }; reader.readAsDataURL(file);
 }
-
 async function uploadHero(inp) {
   const roomDoc = await getDoc(doc(db, 'rooms', cur.roomId));
   if (!roomDoc.exists() || roomDoc.data().owner !== cur.user) return;
@@ -442,6 +574,7 @@ async function uploadHero(inp) {
 }
 window.uploadHero = uploadHero;
 
+// ─── 탭 전환 ───
 function switchTab(i) {
   document.querySelectorAll('.tab').forEach((t, j) => t.classList.toggle('on', i === j));
   document.getElementById('tab-0').style.display = i === 0 ? 'block' : 'none';
@@ -450,43 +583,56 @@ function switchTab(i) {
 }
 window.switchTab = switchTab;
 
+// ─── 회차 그리드 ───
 function renderGrid(done) {
   const g = document.getElementById('ep-grid'); g.innerHTML = '';
-  for (let i = 1; i <= TOTAL; i++) {
+  for (let i = 1; i <= currentTotal; i++) {
     const b = document.createElement('button');
     b.className = 'ep-btn' + (done.includes(i) ? ' done' : '');
     b.textContent = i + '화'; b.onclick = () => openModal(i); g.appendChild(b);
   }
 }
 
-function renderVS(rm) {
-  const myN = cur.user;
-  const others = Object.keys(rm.members).filter(n => n !== myN);
-  const op = others.length > 0 ? others[0] : '(상대 없음)';
-  const myD = (rm.members[myN]?.done || []).length;
-  const opD = others.length > 0 ? (rm.members[op]?.done || []).length : 0;
-  const myP = Math.round(myD / TOTAL * 100);
-  const opP = Math.round(opD / TOTAL * 100);
-  document.getElementById('vs-na').textContent = myN;
-  document.getElementById('vs-pa').textContent = myP + '%';
-  document.getElementById('vs-ea').textContent = myD + '화 완료';
-  document.getElementById('vs-nb').textContent = op;
-  document.getElementById('vs-pb').textContent = opP + '%';
-  document.getElementById('vs-eb').textContent = opD + '화 완료';
-  document.getElementById('pbar-la').textContent = myN;
-  document.getElementById('pbar-lb').textContent = op;
-  document.getElementById('pbar-pa').textContent = myP + '%';
-  document.getElementById('pbar-pb').textContent = opP + '%';
-  document.getElementById('pbar-a').style.width = myP + '%';
-  document.getElementById('pbar-b').style.width = opP + '%';
-  let msg = '';
-  if (myD > opD) msg = myN + '가 ' + (myD - opD) + '화 앞서고 있어 🏆';
-  else if (opD > myD) msg = op + '가 ' + (opD - myD) + '화 앞서고 있어 💪';
-  else if (myD > 0) msg = '동률! 팽팽한 승부 ⚖️';
-  else msg = '아직 시작 전. 먼저 시청해봐!';
-  document.getElementById('lead-msg').textContent = msg;
+// ─── 랭킹 ───
+function renderRanking(rm) {
+  const members = Object.keys(rm.members);
+  const total = rm.total || 16;
+  const ranked = members.map(n => ({
+    name: n, done: (rm.members[n]?.done || []).length,
+    pct: Math.round((rm.members[n]?.done || []).length / total * 100)
+  })).sort((a, b) => b.done - a.done);
+
+  const medals = ['🥇', '🥈', '🥉'];
+  const colors = ['#1d9e75', '#378add', '#d4537e', '#f5a623', '#888'];
+  const rankEl = document.getElementById('ranking-list');
+  rankEl.innerHTML = ranked.map((m, i) => {
+    const isMe = m.name === cur.user;
+    return `<div class="rank-item${isMe ? ' me' : ''}">
+      <div class="rank-num">${i < 3 ? medals[i] : `<span style="font-size:13px;color:#888">${i+1}</span>`}</div>
+      <div class="rank-info">
+        <div class="rank-name">
+          ${m.name}
+          ${isMe ? '<span class="me-tag">(나)</span>' : ''}
+          ${m.name === rm.owner ? '<span class="owner-tag">방장</span>' : ''}
+        </div>
+        <div class="pbar-bg"><div class="pbar" style="width:${m.pct}%;background:${colors[Math.min(i, colors.length-1)]}"></div></div>
+      </div>
+      <div class="rank-pct">${m.pct}%</div>
+    </div>`;
+  }).join('');
+
+  // 다이나믹 멘트
+  const myIdx = ranked.findIndex(m => m.name === cur.user);
+  const myData = ranked[myIdx];
+  const topData = ranked[0];
+  const msgEl = document.getElementById('dynamic-msg');
+  if (myData) {
+    const msg = getImSungHanMsg(myIdx + 1, ranked.length, myData.done, topData.done, total, topData.name);
+    msgEl.textContent = msg; msgEl.style.display = 'block';
+  }
 }
 
+// ─── 회차 완료 모달 ───
 function openModal(ep) {
   selEp = ep; selTyp = 'review'; epImgData = null;
   document.getElementById('mod-title').textContent = ep + '화 완료 처리';
@@ -498,16 +644,10 @@ function openModal(ep) {
   document.getElementById('modal-ep').classList.add('open');
 }
 window.openModal = openModal;
-
 function closeModal() { document.getElementById('modal-ep').classList.remove('open'); }
 window.closeModal = closeModal;
-
-function selType(t) {
-  selTyp = t;
-  ['review', 'scene', 'line'].forEach(s => document.getElementById('tb-' + s).classList.toggle('on', s === t));
-}
+function selType(t) { selTyp = t; ['review', 'scene', 'line'].forEach(s => document.getElementById('tb-' + s).classList.toggle('on', s === t)); }
 window.selType = selType;
-
 function previewEpImg(inp) {
   const f = inp.files[0]; if (!f) return;
   resizeImage(f, 800, 0.7, base64 => {
@@ -523,52 +663,57 @@ async function saveEp() {
   const text = document.getElementById('mod-text').value.trim();
   const roomDoc = await getDoc(doc(db, 'rooms', cur.roomId));
   const done = roomDoc.data().members[cur.user]?.done || [];
-  if (!done.includes(selEp)) {
-    done.push(selEp);
-    await updateDoc(doc(db, 'rooms', cur.roomId), { [`members.${cur.user}.done`]: done });
-  }
+  if (!done.includes(selEp)) { done.push(selEp); await updateDoc(doc(db, 'rooms', cur.roomId), { [`members.${cur.user}.done`]: done }); }
   if (text || epImgData) {
     await addDoc(collection(db, 'rooms', cur.roomId, 'feed'), {
-      user: cur.user, ep: selEp, type: selTyp,
-      text, img: epImgData || null,
+      user: cur.user, ep: selEp, type: selTyp, text, img: epImgData || null,
       ts: serverTimestamp(), comments: []
     });
   }
-  closeModal();
-  showToast(selEp + '화 완료!');
+  closeModal(); showToast(selEp + '화 완료!');
 }
 window.saveEp = saveEp;
 
+// ─── 피드 ───
 function loadFeed() {
   if (unsubFeed) unsubFeed();
   const el = document.getElementById('feed-list');
   el.innerHTML = '<div class="loading">불러오는 중...</div>';
   const q = query(collection(db, 'rooms', cur.roomId, 'feed'), orderBy('ts', 'desc'));
   unsubFeed = onSnapshot(q, snap => {
-    if (snap.empty) {
-      el.innerHTML = '<p style="font-size:13px;color:#aaa;text-align:center;padding:2.5rem 0">아직 기록이 없어.<br/>회차를 완료하고 기록을 남겨봐!</p>';
-      return;
-    }
+    if (snap.empty) { el.innerHTML = '<p style="font-size:13px;color:#aaa;text-align:center;padding:2.5rem 0">아직 기록이 없어.<br/>회차를 완료하고 기록을 남겨봐!</p>'; return; }
     const tmap = { review: { label: '한줄 감상', cls: 'b-review' }, scene: { label: '명장면', cls: 'b-scene' }, line: { label: '명대사', cls: 'b-line' } };
     el.innerHTML = snap.docs.map(d => {
-      const f = d.data(); const fid = d.id;
+      const f = d.data(); const fid = d.id; const isMyPost = f.user === cur.user;
       const t = tmap[f.type] || tmap.review;
       const ts = f.ts?.toDate ? f.ts.toDate() : new Date();
-      const ds = (ts.getMonth() + 1) + '/' + ts.getDate() + ' ' + ts.getHours() + ':' + String(ts.getMinutes()).padStart(2, '0');
+      const ds = (ts.getMonth()+1)+'/'+ts.getDate()+' '+ts.getHours()+':'+String(ts.getMinutes()).padStart(2,'0');
       const comments = f.comments || [];
       const commHtml = comments.map((c, ci) => {
+        const isMyComment = c.user === cur.user;
         const replyHtml = (c.replies || []).map(rp =>
-          `<div class="reply-item"><div class="comment-meta">${rp.user} · ${rp.ts}</div>${rp.text}</div>`
+          `<div class="reply-item"><div class="comment-meta" style="justify-content:flex-start">${rp.user} · ${rp.ts}</div>${rp.text}</div>`
         ).join('');
         return `<div class="comment-item">
-          <div class="comment-meta">${c.user} · ${c.ts}</div>${c.text}
+          <div class="comment-meta">
+            <span>${c.user} · ${c.ts}</span>
+            ${isMyComment ? `<div class="comment-edit-btns">
+              <button class="comment-edit-btn" onclick="toggleCommentEdit('${fid}',${ci})">수정</button>
+              <button class="comment-edit-btn del" onclick="deleteComment('${fid}',${ci})">삭제</button>
+            </div>` : ''}
+          </div>
+          <div id="ct-${fid}-${ci}">${c.text}</div>
+          ${isMyComment ? `<div class="comment-edit-box" id="ceb-${fid}-${ci}">
+            <input type="text" id="cei-${fid}-${ci}" value="${c.text.replace(/"/g, '&quot;')}"/>
+            <div style="display:flex;gap:6px;justify-content:flex-end;margin-top:4px">
+              <button class="btn btn-sm" onclick="toggleCommentEdit('${fid}',${ci})">취소</button>
+              <button class="btn btn-sm btn-p" onclick="saveCommentEdit('${fid}',${ci})">저장</button>
+            </div>
+          </div>` : ''}
           <button class="btn-ghost" style="font-size:11px;margin-top:2px" onclick="toggleReply('${fid}',${ci})">↩ 답글</button>
           ${replyHtml}
           <div id="ri-${fid}-${ci}" style="display:none;margin-top:6px">
-            <div class="comment-input-row">
-              <input type="text" placeholder="답글..." id="rt-${fid}-${ci}"/>
-              <button class="btn btn-sm" onclick="addReply('${fid}',${ci})">등록</button>
-            </div>
+            <div class="comment-input-row"><input type="text" placeholder="답글..." id="rt-${fid}-${ci}"/><button class="btn btn-sm" onclick="addReply('${fid}',${ci})">등록</button></div>
           </div>
         </div>`;
       }).join('');
@@ -576,12 +721,25 @@ function loadFeed() {
         ${f.img ? `<img class="feed-img" src="${f.img}" alt="${f.ep}화 이미지"/>` : ''}
         <div class="feed-body">
           <div class="feed-meta">
-            <span class="badge ${t.cls}">${t.label}</span>
-            <span>${f.user}</span><span>·</span><span>${f.ep}화</span><span>·</span><span>${ds}</span>
+            <div class="feed-meta-left">
+              <span class="badge ${t.cls}">${t.label}</span>
+              <span>${f.user}</span><span>·</span><span>${f.ep}화</span><span>·</span><span>${ds}</span>
+            </div>
+            ${isMyPost ? `<div class="feed-edit-btns">
+              <button class="feed-edit-btn" onclick="toggleFeedEdit('${fid}')">수정</button>
+              <button class="feed-edit-btn del" onclick="deleteFeed('${fid}')">삭제</button>
+            </div>` : ''}
           </div>
-          ${f.text ? `<div class="feed-text">${f.text}</div>` : ''}
+          ${f.text ? `<div class="feed-text" id="ft-${fid}">${f.text}</div>` : ''}
+          ${isMyPost && f.text ? `<div class="feed-edit-box" id="feb-${fid}">
+            <textarea id="fei-${fid}">${f.text}</textarea>
+            <div class="feed-edit-box-btns">
+              <button class="btn btn-sm" onclick="toggleFeedEdit('${fid}')">취소</button>
+              <button class="btn btn-sm btn-p" onclick="saveFeedEdit('${fid}')">저장</button>
+            </div>
+          </div>` : ''}
           <div class="comment-area">${commHtml}
-            <div class="comment-input-row" style="margin-top:${comments.length ? '8px' : '0'}">
+            <div class="comment-input-row" style="margin-top:${comments.length?'8px':'0'}">
               <input type="text" placeholder="댓글 달기..." id="ct-${fid}"/>
               <button class="btn btn-sm" onclick="addComment('${fid}')">등록</button>
             </div>
@@ -592,31 +750,73 @@ function loadFeed() {
   });
 }
 
-function toggleReply(fid, ci) {
-  const el = document.getElementById(`ri-${fid}-${ci}`);
-  el.style.display = el.style.display === 'none' ? 'block' : 'none';
+// ─── 피드 수정/삭제 ───
+function toggleFeedEdit(fid) {
+  const box = document.getElementById('feb-' + fid); if (!box) return;
+  box.classList.toggle('on');
 }
+window.toggleFeedEdit = toggleFeedEdit;
+
+async function saveFeedEdit(fid) {
+  const text = document.getElementById('fei-' + fid)?.value.trim(); if (!text) return;
+  await updateDoc(doc(db, 'rooms', cur.roomId, 'feed', fid), { text });
+  showToast('수정됐어');
+}
+window.saveFeedEdit = saveFeedEdit;
+
+async function deleteFeed(fid) {
+  if (!confirm('이 기록을 삭제할까?')) return;
+  await deleteDoc(doc(db, 'rooms', cur.roomId, 'feed', fid));
+  showToast('삭제됐어');
+}
+window.deleteFeed = deleteFeed;
+
+// ─── 댓글 수정/삭제 ───
+function toggleCommentEdit(fid, ci) {
+  document.getElementById(`ceb-${fid}-${ci}`)?.classList.toggle('on');
+}
+window.toggleCommentEdit = toggleCommentEdit;
+
+async function saveCommentEdit(fid, ci) {
+  const text = document.getElementById(`cei-${fid}-${ci}`)?.value.trim(); if (!text) return;
+  const feedRef = doc(db, 'rooms', cur.roomId, 'feed', fid);
+  const feedDoc = await getDoc(feedRef);
+  const comments = feedDoc.data().comments || [];
+  comments[ci].text = text;
+  await updateDoc(feedRef, { comments });
+  showToast('댓글이 수정됐어');
+}
+window.saveCommentEdit = saveCommentEdit;
+
+async function deleteComment(fid, ci) {
+  if (!confirm('댓글을 삭제할까?')) return;
+  const feedRef = doc(db, 'rooms', cur.roomId, 'feed', fid);
+  const feedDoc = await getDoc(feedRef);
+  const comments = feedDoc.data().comments || [];
+  comments.splice(ci, 1);
+  await updateDoc(feedRef, { comments });
+  showToast('댓글이 삭제됐어');
+}
+window.deleteComment = deleteComment;
+
+// ─── 댓글/답글 ───
+function toggleReply(fid, ci) { const el = document.getElementById(`ri-${fid}-${ci}`); el.style.display = el.style.display==='none'?'block':'none'; }
 window.toggleReply = toggleReply;
 
 async function addComment(fid) {
-  const inp = document.getElementById('ct-' + fid);
-  const text = inp.value.trim(); if (!text) return;
-  const d = new Date();
-  const ts = (d.getMonth() + 1) + '/' + d.getDate() + ' ' + d.getHours() + ':' + String(d.getMinutes()).padStart(2, '0');
+  const inp = document.getElementById('ct-' + fid); const text = inp.value.trim(); if (!text) return;
+  const d = new Date(); const ts = (d.getMonth()+1)+'/'+d.getDate()+' '+d.getHours()+':'+String(d.getMinutes()).padStart(2,'0');
   const feedRef = doc(db, 'rooms', cur.roomId, 'feed', fid);
   const feedDoc = await getDoc(feedRef);
   const comments = feedDoc.data().comments || [];
   comments.push({ user: cur.user, text, ts, replies: [] });
-  await updateDoc(feedRef, { comments });
-  inp.value = '';
+  await updateDoc(feedRef, { comments }); inp.value = '';
 }
 window.addComment = addComment;
 
 async function addReply(fid, ci) {
-  const inp = document.getElementById(`rt-${fid}-${ci}`);
-  const text = inp.value.trim(); if (!text) return;
-  const d = new Date();
-  const ts = (d.getMonth() + 1) + '/' + d.getDate() + ' ' + d.getHours() + ':' + String(d.getMinutes()).padStart(2, '0');
+  const inp = document.getElementById(`rt-${fid}-${ci}`); const text = inp.value.trim(); if (!text) return;
+  const d = new Date(); const ts = (d.getMonth()+1)+'/'+d.getDate()+' '+d.getHours()+':'+String(d.getMinutes()).padStart(2,'0');
   const feedRef = doc(db, 'rooms', cur.roomId, 'feed', fid);
   const feedDoc = await getDoc(feedRef);
   const comments = feedDoc.data().comments || [];
@@ -626,11 +826,9 @@ async function addReply(fid, ci) {
 }
 window.addReply = addReply;
 
+// ─── 세션 복원 ───
 const saved = localStorage.getItem('ds-session');
-if (saved) {
-  try { cur = JSON.parse(saved); enterRoom(); }
-  catch(e) { localStorage.removeItem('ds-session'); }
-}
+if (saved) { try { cur = JSON.parse(saved); enterRoom(); } catch(e) { localStorage.removeItem('ds-session'); } }
 </script>
 </body>
 </html>
