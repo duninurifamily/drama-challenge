@@ -4,57 +4,58 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>닥터신 챌린지</title>
+<link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=swap" rel="stylesheet">
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#f5f5f0;color:#1a1a1a;min-height:100vh}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#000;color:#fff;min-height:100vh}
 .wrap{max-width:480px;margin:0 auto;padding:0 0 60px}
 .scr{display:none;padding:1.25rem 1rem 2.5rem}
 .scr.on{display:block}
-h2{font-size:18px;font-weight:600;color:#1a1a1a;margin-bottom:3px}
-.sub{font-size:13px;color:#888;margin-bottom:1.25rem}
-.card{background:#fff;border:0.5px solid #e5e5e0;border-radius:12px;padding:1rem 1.25rem;margin-bottom:12px}
-label{font-size:13px;color:#888;display:block;margin-bottom:5px}
-input,textarea,select{width:100%;padding:8px 10px;border:1px solid #e0e0db;border-radius:8px;font-size:14px;background:#fff;color:#1a1a1a;outline:none;margin-bottom:4px;font-family:inherit}
-input:focus,textarea:focus,select:focus{border-color:#1a1a1a}
+h2{font-size:18px;font-weight:600;color:#fff;margin-bottom:3px}
+.sub{font-size:13px;color:#aaa;margin-bottom:1.25rem}
+.card{background:#111;border:0.5px solid #2a2a2a;border-radius:12px;padding:1rem 1.25rem;margin-bottom:12px}
+label{font-size:13px;color:#aaa;display:block;margin-bottom:5px}
+input,textarea,select{width:100%;padding:8px 10px;border:1px solid #333;border-radius:8px;font-size:14px;background:#111;color:#fff;outline:none;margin-bottom:4px;font-family:inherit}
+input:focus,textarea:focus,select:focus{border-color:#00d4b8}
 textarea{height:68px;resize:none}
 .field-wrap{margin-bottom:10px}
 .field-msg{font-size:12px;margin:3px 0 0;min-height:16px;display:block;color:#e24b4a}
 .field-msg.ok{color:#1d9e75}
 .input-ok{border-color:#1d9e75!important}
 .input-err{border-color:#e24b4a!important}
-.btn{width:100%;padding:11px;font-size:14px;font-weight:600;border-radius:8px;cursor:pointer;border:1px solid #e0e0db;background:#fff;color:#1a1a1a;margin-top:4px;transition:background .15s}
-.btn:hover{background:#f5f5f0}
-.btn-p{background:#1a1a1a;color:#fff;border-color:#1a1a1a}
-.btn-p:hover{opacity:.85}
+.btn{width:100%;padding:11px;font-size:14px;font-weight:600;border-radius:8px;cursor:pointer;border:1px solid #333;background:#111;color:#fff;margin-top:4px;transition:background .15s}
+.btn:hover{background:#1a1a1a}
+.btn-p{background:#fff;color:#000;border-color:#fff}
+.btn-p:hover{opacity:.9}
 .btn-sm{width:auto;padding:6px 14px;font-size:13px;margin-top:0}
-.btn-ghost{width:auto;padding:0;font-size:13px;background:none;border:none;color:#888;cursor:pointer}
-.back{font-size:13px;color:#888;cursor:pointer;margin-bottom:1rem;display:inline-flex;align-items:center;gap:4px;background:none;border:none;padding:0}
-.tabs{display:flex;margin-bottom:1.5rem;border-bottom:1px solid #e5e5e0}
-.tab{flex:1;padding:9px 0;font-size:13px;font-weight:600;color:#888;cursor:pointer;border:none;background:none;border-bottom:2px solid transparent;margin-bottom:-1px}
-.tab.on{color:#1a1a1a;border-bottom-color:#1a1a1a}
+.btn-ghost{width:auto;padding:0;font-size:13px;background:none;border:none;color:#aaa;cursor:pointer}
+.back{font-size:13px;color:#aaa;cursor:pointer;margin-bottom:1rem;display:inline-flex;align-items:center;gap:4px;background:none;border:none;padding:0}
+.tabs{display:flex;margin-bottom:1.5rem;border-bottom:1px solid #222}
+.tab{flex:1;padding:9px 0;font-size:13px;font-weight:600;color:#666;cursor:pointer;border:none;background:none;border-bottom:2px solid transparent;margin-bottom:-1px}
+.tab.on{color:#fff;border-bottom-color:#00d4b8}
 .ep-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(52px,1fr));gap:7px;margin-bottom:1.5rem}
-.ep-btn{padding:7px 4px;font-size:12px;font-weight:600;border-radius:8px;border:1px solid #e0e0db;background:#fff;color:#888;cursor:pointer;text-align:center;transition:all .15s}
+.ep-btn{padding:7px 4px;font-size:12px;font-weight:600;border-radius:8px;border:1px solid #2a2a2a;background:#111;color:#666;cursor:pointer;text-align:center;transition:all .15s}
 .ep-btn.done{background:#1d9e75;border-color:#0f6e56;color:#fff}
-.ep-btn:hover:not(.done){background:#f5f5f0}
-.pbar-bg{height:5px;border-radius:3px;background:#f0f0eb;overflow:hidden;margin-bottom:3px}
+.ep-btn:hover:not(.done){background:#1a1a1a}
+.pbar-bg{height:5px;border-radius:3px;background:#1a1a1a;overflow:hidden;margin-bottom:3px}
 .pbar{height:100%;border-radius:3px;transition:width .4s}
 .badge{display:inline-block;font-size:11px;padding:2px 8px;border-radius:6px}
 .b-scene{background:#eeedfe;color:#3c3489}
 .b-line{background:#faeeda;color:#633806}
 .b-review{background:#e1f5ee;color:#085041}
-.room-item{padding:10px 12px;border:1px solid #e0e0db;border-radius:8px;cursor:pointer;margin-bottom:8px;transition:all .15s;background:#fff}
-.room-item:hover,.room-item.sel{border-color:#1a1a1a;background:#f9f9f6}
+.room-item{padding:10px 12px;border:1px solid #2a2a2a;border-radius:8px;cursor:pointer;margin-bottom:8px;transition:all .15s;background:#111}
+.room-item:hover,.room-item.sel{border-color:#00d4b8;background:#0a1a1a}
 .modal-bg{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.5);align-items:flex-start;justify-content:center;z-index:100;padding-top:60px}
 .modal-bg.open{display:flex}
-.modal{background:#fff;border-radius:16px;padding:1.25rem;width:92%;max-width:380px}
+.modal{background:#111;border-radius:16px;padding:1.25rem;border:1px solid #2a2a2a;width:92%;max-width:380px}
 .modal h3{font-size:16px;font-weight:600;margin-bottom:3px}
 .modal-sub{font-size:13px;color:#888;margin-bottom:1rem}
 .type-btns{display:flex;gap:6px;margin-bottom:10px}
-.type-btn{flex:1;padding:6px 4px;font-size:12px;border-radius:8px;border:1px solid #e0e0db;background:#fff;color:#888;cursor:pointer;text-align:center}
-.type-btn.on{border-color:#1a1a1a;color:#1a1a1a;font-weight:600}
+.type-btn{flex:1;padding:6px 4px;font-size:12px;border-radius:8px;border:1px solid #2a2a2a;background:#111;color:#666;cursor:pointer;text-align:center}
+.type-btn.on{border-color:#00d4b8;color:#00d4b8;font-weight:600}
 .img-upload-area{border:1px dashed #ccc;border-radius:8px;padding:1rem;text-align:center;cursor:pointer;margin-bottom:10px;font-size:13px;color:#888}
 .img-preview{width:100%;border-radius:8px;margin-bottom:8px;display:none;max-height:240px;object-fit:cover}
-.feed-card{background:#fff;border:1px solid #e5e5e0;border-radius:12px;margin-bottom:14px;overflow:hidden}
+.feed-card{background:#111;border:1px solid #2a2a2a;border-radius:12px;margin-bottom:14px;overflow:hidden}
 .feed-img{width:100%;display:block;max-height:320px;object-fit:cover}
 .feed-body{padding:.875rem 1rem}
 .feed-meta{font-size:12px;color:#888;margin-bottom:6px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:4px}
@@ -63,34 +64,34 @@ textarea{height:68px;resize:none}
 .feed-edit-btn{font-size:11px;color:#bbb;cursor:pointer;background:none;border:none;padding:0;transition:color .15s}
 .feed-edit-btn:hover{color:#888}
 .feed-edit-btn.del:hover{color:#e24b4a}
-.feed-text{font-size:15px;color:#1a1a1a;line-height:1.6;margin-bottom:.75rem}
+.feed-text{font-size:15px;color:#fff;line-height:1.6;margin-bottom:.75rem}
 .feed-edit-box{display:none;margin-bottom:.75rem}
 .feed-edit-box.on{display:block}
 .feed-edit-box textarea{margin-bottom:6px;height:72px}
 .feed-edit-box-btns{display:flex;gap:6px;justify-content:flex-end}
-.comment-area{border-top:1px solid #f0f0eb;padding-top:.75rem}
-.comment-item{font-size:13px;color:#1a1a1a;padding:5px 0;border-bottom:1px solid #f0f0eb}
+.comment-area{border-top:1px solid #222;padding-top:.75rem}
+.comment-item{font-size:13px;color:#fff;padding:5px 0;border-bottom:1px solid #222}
 .comment-item:last-child{border-bottom:none}
-.comment-meta{font-size:11px;color:#888;margin-bottom:2px;display:flex;justify-content:space-between;align-items:center}
+.comment-meta{font-size:11px;color:#666;margin-bottom:2px;display:flex;justify-content:space-between;align-items:center}
 .comment-edit-btns{display:flex;gap:8px}
 .comment-edit-btn{font-size:10px;color:#bbb;cursor:pointer;background:none;border:none;padding:0}
 .comment-edit-btn:hover{color:#888}
 .comment-edit-btn.del:hover{color:#e24b4a}
-.reply-item{margin-left:16px;border-left:2px solid #e5e5e0;padding-left:10px;margin-top:4px}
+.reply-item{margin-left:16px;border-left:2px solid #222;padding-left:10px;margin-top:4px}
 .comment-edit-box{display:none;margin-top:6px}
 .comment-edit-box.on{display:block}
 .comment-edit-box input{margin-bottom:6px}
 .comment-input-row{display:flex;gap:6px;margin-top:8px;align-items:center}
 .comment-input-row input{margin-bottom:0;flex:1;font-size:13px}
-.rank-item{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:10px;background:#fff;border:1px solid #e5e5e0;margin-bottom:8px}
-.rank-item.me{border-color:#1a1a1a;background:#f9f9f6}
+.rank-item{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:10px;background:#111;border:1px solid #2a2a2a;margin-bottom:8px}
+.rank-item.me{border-color:#00d4b8;background:#0a1a1a}
 .rank-num{font-size:20px;width:28px;text-align:center;flex-shrink:0}
 .rank-info{flex:1;min-width:0}
-.rank-name{font-size:13px;font-weight:600;color:#1a1a1a;margin-bottom:4px;display:flex;align-items:center;gap:5px;flex-wrap:wrap}
-.rank-pct{font-size:14px;font-weight:700;color:#1a1a1a;flex-shrink:0;width:36px;text-align:right}
-.me-tag{font-size:10px;color:#888;font-weight:400}
+.rank-name{font-size:13px;font-weight:600;color:#fff;margin-bottom:4px;display:flex;align-items:center;gap:5px;flex-wrap:wrap}
+.rank-pct{font-size:14px;font-weight:700;color:#fff;flex-shrink:0;width:36px;text-align:right}
+.me-tag{font-size:10px;color:#666;font-weight:400}
 .owner-tag{font-size:10px;padding:1px 6px;background:#eeedfe;color:#3c3489;border-radius:4px;font-weight:400}
-.dynamic-msg{font-size:13px;color:#888;line-height:1.6;margin-bottom:1.25rem;padding:12px 14px;background:#f9f9f6;border-radius:8px;border-left:3px solid #e0e0db}
+.dynamic-msg{font-size:13px;color:#00d4b8;line-height:1.6;margin-bottom:1.25rem;padding:12px 14px;background:#0a1410;border-radius:8px;border-left:3px solid #00d4b8}
 .notice-bar{background:#faeeda;border-radius:8px;padding:10px 12px;margin-bottom:1.25rem;display:flex;align-items:flex-start;gap:8px}
 .notice-content{flex:1;font-size:13px;color:#633806;line-height:1.5}
 .notice-actions{display:flex;gap:8px;flex-shrink:0;margin-top:1px}
@@ -101,34 +102,42 @@ textarea{height:68px;resize:none}
 .notice-input-btns{display:flex;gap:6px;justify-content:flex-end}
 .hero-wrap{position:relative;margin-bottom:1.25rem}
 .hero-img-el{width:100%;max-height:220px;object-fit:cover;border-radius:12px;display:none}
-.hero-ph{border:1px dashed #ccc;border-radius:12px;padding:1.5rem;text-align:center;font-size:13px;color:#aaa}
+.hero-ph{border:1px dashed #333;border-radius:12px;padding:1.5rem;text-align:center;font-size:13px;color:#666}
 .hero-change-btn{position:absolute;bottom:10px;right:10px;background:rgba(0,0,0,.6);color:#fff;border:none;border-radius:8px;padding:6px 12px;font-size:12px;cursor:pointer;display:none}
 .owner-badge{display:inline-flex;align-items:center;gap:4px;font-size:11px;padding:2px 8px;border-radius:6px;background:#eeedfe;color:#3c3489;margin-left:6px}
 .toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:#1a1a1a;color:#fff;padding:10px 20px;border-radius:8px;font-size:13px;z-index:999;display:none;white-space:nowrap}
 .loading{text-align:center;padding:2rem;font-size:13px;color:#888}
-.challenge-type-wrap{border:1px solid #e0e0db;border-radius:8px;padding:10px 12px;margin-bottom:10px}
-.challenge-opt{display:flex;align-items:center;gap:8px;padding:5px 0;cursor:pointer;font-size:13px;color:#1a1a1a}
+.challenge-type-wrap{border:1px solid #2a2a2a;border-radius:8px;padding:10px 12px;margin-bottom:10px}
+.challenge-opt{display:flex;align-items:center;gap:8px;padding:5px 0;cursor:pointer;font-size:13px;color:#fff}
 .challenge-opt input[type=radio]{width:14px;height:14px;flex-shrink:0;accent-color:#1a1a1a}
-.challenge-opt-sub{font-size:11px;color:#888;padding-left:22px;margin-top:-3px;margin-bottom:6px}
+.challenge-opt-sub{font-size:11px;color:#666;padding-left:22px;margin-top:-3px;margin-bottom:6px}
 .challenge-opt.disabled{opacity:.4;cursor:not-allowed}
-.ep-count-wrap{background:#f5f5f0;border-radius:6px;padding:8px 10px;margin-top:8px}
+.ep-count-wrap{background:#0a0a0a;border-radius:6px;padding:8px 10px;margin-top:8px}
 .ep-count-wrap label{font-size:12px;color:#888;margin-bottom:4px}
 .ep-count-wrap select{margin-bottom:0;font-size:13px}
-.ep-section-label{font-size:13px;color:#888;margin-bottom:10px}
+.ep-section-label{font-size:13px;color:#aaa;margin-bottom:10px}
 </style>
 </head>
 <body>
 <div class="wrap">
 
-<div id="s-home" class="scr on" style="padding-top:2rem">
-  <div class="hero-wrap">
-    <img id="hero-img-home" class="hero-img-el" alt="대표 이미지"/>
-    <div id="hero-ph-home" class="hero-ph"><div style="font-size:28px;margin-bottom:6px">🏥</div>닥터신 챌린지</div>
+<div id="s-home" class="scr on" style="padding:0;background:#000;min-height:100vh">
+  <div style="position:relative;height:52vw;max-height:260px;overflow:hidden">
+    <img src="images/hero.jpg" alt="닥터신" style="width:100%;height:100%;object-fit:cover;object-position:top center;display:block"/>
+    <div style="position:absolute;bottom:0;left:0;right:0;height:120px;background:linear-gradient(transparent,#000)"></div>
   </div>
-  <h2 style="font-size:22px;margin-bottom:4px">닥터신 챌린지</h2>
-  <p class="sub" style="margin-bottom:1.5rem">임성한 작가의 병맛 드라마, 같이 버텨보자</p>
-  <button class="btn btn-p" style="margin-bottom:10px" onclick="go('s-create')">방 만들기</button>
-  <button class="btn" onclick="goJoin()">기존 방 입장하기</button>
+  <div style="padding:0 1.25rem 2rem;background:#000">
+    <div style="font-size:9px;color:#555;letter-spacing:3px;margin-bottom:6px;font-family:'Black Han Sans',sans-serif">TV CHOSUN · 주말 미니시리즈</div>
+    <div style="position:relative;margin-bottom:6px">
+      <div style="font-family:'Black Han Sans',sans-serif;font-size:52px;color:#fff;letter-spacing:-2px;line-height:0.9">닥터신</div>
+      <div style="position:absolute;top:2px;left:2px;font-family:'Black Han Sans',sans-serif;font-size:52px;color:#00d4b8;opacity:.2;letter-spacing:-2px;line-height:0.9;pointer-events:none">닥터신</div>
+    </div>
+    <div style="width:48px;height:1.5px;background:#00d4b8;margin:10px 0 12px"></div>
+    <div id="home-msg" style="font-size:11px;color:#00d4b8;line-height:1.7;min-height:40px;opacity:0;transition:opacity .7s;margin-bottom:10px"></div>
+    <canvas id="home-hb" width="100%" height="50" style="display:block;width:100%;margin-bottom:20px"></canvas>
+    <button class="btn btn-p" style="margin-bottom:10px;font-family:'Black Han Sans',sans-serif;letter-spacing:1px" onclick="go('s-create')">방 만들기</button>
+    <button class="btn" style="border-color:#444;color:#ccc" onclick="goJoin()">기존 방 입장하기</button>
+  </div>
 </div>
 
 <div id="s-create" class="scr">
@@ -259,6 +268,82 @@ textarea{height:68px;resize:none}
 </div>
 
 <div class="toast" id="toast"></div>
+
+
+<script>
+(function(){
+  const msgs = [
+    "말 있지, 칼 뽑았으면\n무라도 썰으라구.",
+    "기막히구 코막혀.\n이 드라마가 우습게 보여?",
+    "벌떡 일어나 뛰려 애라도\n쓰는 게 만물 영장이지.",
+    "아서. 이판사판 공사판이야.\n같이 버텨보는 거야.",
+    "그쪽, 안 질리구 배겨?\n순리에 따라가라구.",
+    "말 있지, 백짓장두 맞들면\n낫다구. 함께 달려.",
+    "나두 감정동물이야.\n계속 긁을려?",
+    "말 있지, 과거는 히스토리구\n현재는 프레젠트, 선물이라구.",
+  ];
+  const msgEl = document.getElementById('home-msg');
+  if (!msgEl) return;
+  let idx = Math.floor(Math.random() * msgs.length);
+  function show() {
+    msgEl.style.opacity = '0';
+    setTimeout(() => {
+      idx = (idx + 1) % msgs.length;
+      msgEl.innerHTML = msgs[idx].replace(/\n/g, '<br>');
+      msgEl.style.opacity = '1';
+    }, 500);
+  }
+  show();
+  setInterval(show, 4500);
+
+  const cv = document.getElementById('home-hb');
+  if (!cv) return;
+  cv.width = cv.parentElement.offsetWidth || 300;
+  const ctx = cv.getContext('2d');
+  const W = cv.width, H = 50, MID = H / 2;
+  const pLen = 120;
+  const pat = [
+    [0,0],[14,0],[17,-3],[20,-6],[23,-3],[26,0],[38,0],
+    [40,-4],[43,-26],[46,24],[49,0],[58,0],
+    [62,-8],[68,-13],[74,-8],[80,0],[120,0],
+  ];
+  function getY(rawX) {
+    const cycle = rawX % (pLen * 2);
+    const x = cycle < pLen ? cycle : pLen * 2 - cycle;
+    for (let i = 0; i < pat.length - 1; i++) {
+      if (x >= pat[i][0] && x < pat[i+1][0]) {
+        const t = (x - pat[i][0]) / (pat[i+1][0] - pat[i][0]);
+        return MID + pat[i][1] * (1-t) + pat[i+1][1] * t;
+      }
+    }
+    return MID;
+  }
+  let off = 0, ps = 0.55, lastBeat = -999;
+  function draw() {
+    ctx.clearRect(0, 0, W, H);
+    const cyc = off % (pLen * 2);
+    const ic = cyc < pLen ? cyc : pLen * 2 - cyc;
+    if (ic >= 40 && ic <= 50 && off - lastBeat > 30) { ps = 1.0; lastBeat = off; }
+    if (ps > 0.55) ps -= 0.016;
+    ctx.save();
+    ctx.translate(0, MID); ctx.scale(1, ps); ctx.translate(0, -MID);
+    ctx.strokeStyle = 'rgba(0,212,184,0.12)'; ctx.lineWidth = 1;
+    ctx.beginPath();
+    for (let px = 0; px < W; px++) { const y = getY(px+off-6); px===0?ctx.moveTo(px,y):ctx.lineTo(px,y); }
+    ctx.stroke();
+    ctx.strokeStyle = '#00d4b8'; ctx.lineWidth = 2; ctx.shadowColor = '#00d4b8'; ctx.shadowBlur = 5;
+    ctx.beginPath();
+    for (let px = 0; px < W; px++) { const y = getY(px+off); px===0?ctx.moveTo(px,y):ctx.lineTo(px,y); }
+    ctx.stroke(); ctx.shadowBlur = 0; ctx.restore();
+    const hy = getY(W-1+off); const shy = MID+(hy-MID)*ps;
+    ctx.beginPath(); ctx.arc(W-1, shy, 3, 0, Math.PI*2);
+    ctx.fillStyle = '#00d4b8'; ctx.shadowColor = '#00d4b8'; ctx.shadowBlur = 10; ctx.fill(); ctx.shadowBlur = 0;
+    off = (off + 0.45) % (pLen * 2);
+    requestAnimationFrame(draw);
+  }
+  draw();
+})();
+</script>
 
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.13.0/firebase-app.js";
@@ -633,7 +718,17 @@ function renderRanking(rm) {
 }
 
 // ─── 회차 완료 모달 ───
-function openModal(ep) {
+async function openModal(ep) {
+  const roomDoc = await getDoc(doc(db, 'rooms', cur.roomId));
+  const done = roomDoc.data().members[cur.user]?.done || [];
+  if (done.includes(ep)) {
+    if (confirm(ep + '화 완료를 취소할까?')) {
+      const newDone = done.filter(d => d !== ep);
+      await updateDoc(doc(db, 'rooms', cur.roomId), { [`members.${cur.user}.done`]: newDone });
+      showToast(ep + '화 완료 취소됐어');
+    }
+    return;
+  }
   selEp = ep; selTyp = 'review'; epImgData = null;
   document.getElementById('mod-title').textContent = ep + '화 완료 처리';
   document.getElementById('mod-text').value = '';
