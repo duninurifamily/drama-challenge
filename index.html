@@ -261,10 +261,11 @@ async function checkJoinNick(val) {
   const roomDoc = await getDoc(doc(db, 'rooms', selRoomId));
   if (!roomDoc.exists()) return false;
   const members = roomDoc.data().members || {};
-  if (Object.keys(members).map(n => n.toLowerCase()).includes(v.toLowerCase())) {
-    setField('j-nick', 'j-nick-msg', '이미 이 방에 있는 닉네임이야. 다른 닉네임을 써줘', false); return false;
+  const isExisting = Object.keys(members).map(n => n.toLowerCase()).includes(v.toLowerCase());
+  if (isExisting) {
+    setField('j-nick', 'j-nick-msg', '기존 멤버야. 비밀번호 입력 후 재입장 가능해', true); return 'existing';
   }
-  setField('j-nick', 'j-nick-msg', '사용 가능한 닉네임이야', true); return true;
+  setField('j-nick', 'j-nick-msg', '사용 가능한 닉네임이야', true); return 'new';
 }
 window.checkJoinNick = checkJoinNick;
 
@@ -334,9 +335,12 @@ async function joinRoom() {
   if (!nick || !selRoomId) { err.textContent = '닉네임을 입력해줘'; return; }
   const roomDoc = await getDoc(doc(db, 'rooms', selRoomId));
   if (!roomDoc.exists() || pw !== roomDoc.data().pw) { err.textContent = '비밀번호가 틀렸어'; return; }
-  const nickOk = await checkJoinNick(nick);
-  if (!nickOk) return;
-  await updateDoc(doc(db, 'rooms', selRoomId), { [`members.${nick}`]: { done: [] } });
+  const nickStatus = await checkJoinNick(nick);
+  if (!nickStatus) return;
+  // 새 멤버만 추가, 기존 멤버는 데이터 유지하며 재입장
+  if (nickStatus === 'new') {
+    await updateDoc(doc(db, 'rooms', selRoomId), { [`members.${nick}`]: { done: [] } });
+  }
   cur = { roomId: selRoomId, user: nick };
   localStorage.setItem('ds-session', JSON.stringify(cur));
   enterRoom();
