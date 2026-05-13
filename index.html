@@ -151,7 +151,10 @@ textarea{height:68px;resize:none}
       <h2 id="m-title"></h2>
       <span id="owner-badge" class="owner-badge" style="display:none">👑 방장</span>
     </div>
-    <button class="btn-ghost" onclick="leaveRoom()">나가기</button>
+    <div style="display:flex;align-items:center;gap:10px">
+      <button class="btn-ghost" id="delete-room-btn" onclick="deleteRoom()" style="display:none;color:#e24b4a">🗑 방 삭제</button>
+      <button class="btn-ghost" onclick="leaveRoom()">나가기</button>
+    </div>
   </div>
   <p class="sub" id="m-sub"></p>
   <div class="tabs">
@@ -203,7 +206,7 @@ textarea{height:68px;resize:none}
 
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.13.0/firebase-app.js";
-import { getFirestore, doc, getDoc, setDoc, updateDoc, collection, query, orderBy, onSnapshot, addDoc, serverTimestamp, getDocs } from "https://www.gstatic.com/firebasejs/12.13.0/firebase-firestore.js";
+import { getFirestore, doc, getDoc, setDoc, updateDoc, collection, query, orderBy, onSnapshot, addDoc, serverTimestamp, getDocs, deleteDoc, writeBatch } from "https://www.gstatic.com/firebasejs/12.13.0/firebase-firestore.js";
 
 const firebaseConfig = {
   apiKey: "AIzaSyCwjGgQ2naJOonhpcTYR2jH-qwXqw5DMjE",
@@ -356,6 +359,7 @@ async function enterRoom() {
   const isOwner = rm.owner === cur.user;
   document.getElementById('owner-badge').style.display = isOwner ? 'inline-flex' : 'none';
   document.getElementById('hero-change-btn').style.display = isOwner ? 'block' : 'none';
+  document.getElementById('delete-room-btn').style.display = isOwner ? 'inline' : 'none';
   updateHeroImg(rm.heroImg);
   renderGrid(rm.members[cur.user]?.done || []);
   renderVS(rm);
@@ -367,6 +371,7 @@ async function enterRoom() {
     renderVS(d);
     updateHeroImg(d.heroImg);
     document.getElementById('hero-change-btn').style.display = d.owner === cur.user ? 'block' : 'none';
+    document.getElementById('delete-room-btn').style.display = d.owner === cur.user ? 'inline' : 'none';
   });
   switchTab(0);
   go('s-main');
@@ -387,6 +392,26 @@ async function leaveRoom() {
   go('s-home');
 }
 window.leaveRoom = leaveRoom;
+
+async function deleteRoom() {
+  if (!cur.roomId) return;
+  const roomDoc = await getDoc(doc(db, 'rooms', cur.roomId));
+  if (!roomDoc.exists() || roomDoc.data().owner !== cur.user) return;
+  if (!confirm('정말 방을 삭제할까? 모든 기록이 사라져 😱')) return;
+  const feedSnap = await getDocs(collection(db, 'rooms', cur.roomId, 'feed'));
+  const batch = writeBatch(db);
+  feedSnap.docs.forEach(d => batch.delete(d.ref));
+  batch.delete(doc(db, 'rooms', cur.roomId));
+  await batch.commit();
+  if (unsubRoom) { unsubRoom(); unsubRoom = null; }
+  if (unsubFeed) { unsubFeed(); unsubFeed = null; }
+  cur = { roomId: null, user: null };
+  localStorage.removeItem('ds-session');
+  showToast('방이 삭제됐어');
+  go('s-home');
+}
+window.deleteRoom = deleteRoom;
+
 
 function resizeImage(file, maxWidth, quality, cb) {
   const reader = new FileReader();
